@@ -263,7 +263,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             mCanvas = mSurfaceHolder.lockCanvas();
             //绘制背景
             mCanvas.drawColor(Color.GRAY);
-
             plane_player.draw(mCanvas);
             for (Enemy enemy : enemies) {
                 enemy.draw(mCanvas);
@@ -278,7 +277,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
                 buff.draw(mCanvas);
             }
             if (hasBOSS){
-                mCanvas.drawText("BOSS 2000/"+planeBoss.getHP(),screenWidth/2+200,50,paint);
+                int HP = 400*gameLevel;
+                mCanvas.drawText("BOSS  "+HP+"/"+planeBoss.getHP(),screenWidth/2+200,50,paint);
             }
             mCanvas.drawText("分数："+score,5,50,paint);
             mCanvas.drawText("生命："+HP,5,100,paint);
@@ -292,7 +292,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             }
         }catch (Exception e){
         }
-
     }
 
     private void bossStateAction() {
