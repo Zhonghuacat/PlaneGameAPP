@@ -88,7 +88,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             move_buff();
             drawSomething();
             time++;
-            enemyNumber= (int) (2+ Math.log1p(score+10));
+            enemyNumber= Math.min((int) (2+ Math.log1p(score+10)),12);
             if (HP<=0) initGame();
             levelUP();
             if (hasBOSS){
@@ -339,7 +339,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             if (Math.abs(distance_y)<plane_player.getBitmap().getHeight()/2){
                 buff.getBuff(plane_player);
                 if (buff.getClass()==Buff_HP.class){HP++;}
-                if (buff.getClass()==Buff_Protect.class){protectTime=500;HP++;}
+                if (buff.getClass()==Buff_Protect.class){protectTime=1000;HP+=2;}
                 buff.setHit(true);
             }
     }

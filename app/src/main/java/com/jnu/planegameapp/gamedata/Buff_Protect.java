@@ -16,7 +16,7 @@ public class Buff_Protect implements Buff{
     int screenWidth;
     int screenHeight;
     private int direction=0;
-    private float speed=4;
+    private float speed=2;
     private Bitmap bitmap;
     private float x,y;
     private boolean Hit=false;

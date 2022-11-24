@@ -70,7 +70,7 @@ public class Plane_boss implements Enemy{
             if (direction==1){//上升阶段
                 y=y-8*speed;
                 if (y<(float)(-bitmap.getHeight()/2)){//改变阶段
-                    speed *=30;
+                    speed *=15;
                     direction=-1;
                 }
             } else if (direction==-1){//下落阶段
@@ -87,7 +87,7 @@ public class Plane_boss implements Enemy{
             if (direction==1){//上升阶段
                 y=y-8*speed;
                 if (y<(float)(-bitmap.getHeight()/2)){//改变阶段
-                    speed*=30;
+                    speed*=15;
                     direction=-1;
                 }
             } else if (direction==-1){//下落阶段
@@ -104,7 +104,7 @@ public class Plane_boss implements Enemy{
             if (direction==1){//上升阶段
                 y=y-8*speed;
                 if (y<(float)(-bitmap.getHeight()/2)){//改变阶段
-                    speed*=30;
+                    speed*=15;
                     direction=-1;
                 }
             } else if (direction==-1){//下落阶段
@@ -166,7 +166,7 @@ public class Plane_boss implements Enemy{
     }
 
     public void createBulletLeft(Context context,int time,List<Bullet> bullets){
-        if (bulletNumber>0 && time%5==0 && attackNumber>0){
+        if (bulletNumber>0 && time%12==0 && attackNumber>0){
             float turn = -(float) Math.PI/32;
             if (bulletDirection<(Math.PI/4)) direction=-1;
             Bullet bullet = new Bullet_enemy(context, x-180, y+150);
@@ -180,7 +180,7 @@ public class Plane_boss implements Enemy{
     }
 
     public void createBulletRight(Context context,int time,List<Bullet> bullets){
-        if (bulletNumber>0 && time%5==0 && attackNumber>0){
+        if (bulletNumber>0 && time%12==0 && attackNumber>0){
             float turn = (float) Math.PI/32;
             if (bulletDirection>(Math.PI/4*3)) direction=-1;
             Bullet bullet = new Bullet_enemy(context, x+180, y+150);
@@ -194,7 +194,7 @@ public class Plane_boss implements Enemy{
     }
 
     public void createBulletMid(Context context,int time,List<Bullet> bullets){
-        if (bulletNumber>0 && time%5==0 && attackNumber>0){
+        if (bulletNumber>0 && time%12==0 && attackNumber>0){
             Bullet bullet = new Bullet_enemy(context, x, y+300);
             float RandomDirection = (float) ((2*Math.random()+1)*Math.PI/4.0f);
             bullet.setDirection(RandomDirection);
@@ -206,7 +206,7 @@ public class Plane_boss implements Enemy{
     }
 
     public void createBullet(Context context,int time,List<Bullet> bullets,int direction){
-        if (bulletNumber>0 && time%5==0 && attackNumber>0){
+        if (bulletNumber>0 && time%8==0 && attackNumber>0){
             Bullet_enemy bullet = new Bullet_enemy(context, x, y+300);
             float turn = (float)(Math.PI/64.0f);
             bulletDirection += turn*direction;
@@ -220,7 +220,7 @@ public class Plane_boss implements Enemy{
     }
 
     public void createEnemies(Context context,int time,List<Enemy> enemies){
-        if (bulletNumber>0 && time%8==0 && attackNumber>0){
+        if (bulletNumber>0 && time%20==0 && attackNumber>0){
             Enemy enemy = new Plane_paper(context);
             enemies.add(enemy);
             attackNumber-=5;
@@ -230,7 +230,7 @@ public class Plane_boss implements Enemy{
     }
 
     public void createMissile(Context context,int time,List<Enemy> enemies){
-        if (bulletNumber>0 && time%8==0 && attackNumber>0){
+        if (bulletNumber>0 && time%20==0 && attackNumber>0){
             Enemy enemy = new Missile(context);
             enemies.add(enemy);
             attackNumber-=5;
