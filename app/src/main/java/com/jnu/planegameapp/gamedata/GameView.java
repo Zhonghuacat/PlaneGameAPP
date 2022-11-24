@@ -290,6 +290,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
                 //释放canvas对象并提交画布
                 mSurfaceHolder.unlockCanvasAndPost(mCanvas);
             }
+            Thread.sleep(15);
         }catch (Exception e){
         }
     }
