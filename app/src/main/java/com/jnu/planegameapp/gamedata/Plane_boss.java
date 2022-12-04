@@ -252,4 +252,44 @@ public class Plane_boss implements Enemy{
     public void setHP(float HP) {
         this.HP = HP;
     }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getAttackNumber() {
+        return attackNumber;
+    }
+
+    public void setAttackNumber(int attackNumber) {
+        this.attackNumber = attackNumber;
+    }
 }

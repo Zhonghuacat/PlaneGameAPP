@@ -10,7 +10,7 @@ public class Buff_ATKTest {
 
     @Test
     public void getBuff() {
-        InstrumentationRegistry.getTargetContext();
+
     }
 
     @Test
