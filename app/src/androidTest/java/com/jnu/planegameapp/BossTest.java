@@ -19,6 +19,7 @@ public class BossTest {
 
     @Test
     public void move() {
+
     }
 
     @Test
