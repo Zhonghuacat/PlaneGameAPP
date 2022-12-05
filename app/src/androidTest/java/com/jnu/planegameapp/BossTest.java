@@ -18,7 +18,58 @@ import static org.junit.Assert.*;
 public class BossTest {
 
     @Test
-    public void move() {
+    public void move() {//利用因果图和判定表 排除不可能出现的测试用例
+        //状态-1只出现在位置2，状态357上升阶段只出现在位置2，下落阶段出现在2-3.
+        /*  状态   -1       357     357
+        *   方向   null     1       -1
+        *   位置   2        2       2-3  位置2是 -(1/2)*Height  (1/6)*Height
+        *   动作   下降     上升     下落  位置3是  (1/6)*Height  2*Height
+        *   速度    4       8       30
+        *  */
+        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Plane_boss plane_boss = new Plane_boss(context);
+        float Height = plane_boss.getBitmap().getHeight();
+
+        plane_boss.state=-1;
+        plane_boss.setY(-(1/2.f)*Height);
+        plane_boss.move();
+        assertEquals(-(1/2.f)*Height+4,plane_boss.getY(),1e-5);
+
+        plane_boss.state=3;
+        plane_boss.setDirection(1);
+        plane_boss.setY((1/6.f)*Height);
+        plane_boss.move();
+        assertEquals((1/6.f)*Height-8,plane_boss.getY(),1e-5);
+
+        plane_boss.state=3;
+        plane_boss.setDirection(-1);
+        plane_boss.setY(-(1/2.f)*Height);
+        plane_boss.move();
+        assertEquals(-(1/2.f)*Height+30,plane_boss.getY(),1e-5);
+
+        plane_boss.state=5;
+        plane_boss.setDirection(1);
+        plane_boss.setY((1/6.f)*Height);
+        plane_boss.move();
+        assertEquals((1/6.f)*Height-8,plane_boss.getY(),1e-5);
+
+        plane_boss.state=5;
+        plane_boss.setDirection(-1);
+        plane_boss.setY(-(1/2.f)*Height);
+        plane_boss.move();
+        assertEquals(-(1/2.f)*Height+30,plane_boss.getY(),1e-5);
+
+        plane_boss.state=7;
+        plane_boss.setDirection(1);
+        plane_boss.setY((1/6.f)*Height);
+        plane_boss.move();
+        assertEquals((1/6.f)*Height-8,plane_boss.getY(),1e-5);
+
+        plane_boss.state=7;
+        plane_boss.setDirection(-1);
+        plane_boss.setY(-(1/2.f)*Height);
+        plane_boss.move();
+        assertEquals(-(1/2.f)*Height+30,plane_boss.getY(),1e-5);
 
     }
 

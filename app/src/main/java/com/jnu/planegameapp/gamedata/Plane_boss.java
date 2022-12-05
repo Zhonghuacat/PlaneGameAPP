@@ -70,11 +70,10 @@ public class Plane_boss implements Enemy{
             if (direction==1){//上升阶段
                 y=y-8*speed;
                 if (y<(float)(-bitmap.getHeight()/2)){//改变阶段
-                    speed *=15;
                     direction=-1;
                 }
             } else if (direction==-1){//下落阶段
-                y=y+2*speed;
+                y=y+30*speed;
                 if (y>screenHeight*2){//恢复阶段
                     x= (float) (screenWidth/2);
                     y=(float)(-bitmap.getHeight()/2);
@@ -87,11 +86,10 @@ public class Plane_boss implements Enemy{
             if (direction==1){//上升阶段
                 y=y-8*speed;
                 if (y<(float)(-bitmap.getHeight()/2)){//改变阶段
-                    speed*=15;
                     direction=-1;
                 }
             } else if (direction==-1){//下落阶段
-                y=y+2*speed;x=x+speed/3;
+                y=y+30*speed;x=x+speed*5;
                 if (y>screenHeight*1.5){//恢复阶段
                     x= (float) (screenWidth/2);
                     y=(float)(-bitmap.getHeight()/2);
@@ -108,7 +106,7 @@ public class Plane_boss implements Enemy{
                     direction=-1;
                 }
             } else if (direction==-1){//下落阶段
-                y=y+2*speed;x=x-speed/3;
+                y=y+30*speed;x=x-speed*5;
                 if (y>screenHeight*1.5){//恢复阶段
                     x= (float) (screenWidth/2);
                     y=(float)(-bitmap.getHeight()/2);
