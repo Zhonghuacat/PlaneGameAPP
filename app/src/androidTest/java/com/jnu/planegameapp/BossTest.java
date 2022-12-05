@@ -18,8 +18,9 @@ import static org.junit.Assert.*;
 public class BossTest {
 
     @Test
-    public void move() {//利用因果图和判定表 排除不可能出现的测试用例
-        //状态-1只出现在位置2，状态357上升阶段只出现在位置2，下落阶段出现在2-3.
+    public void move() {
+        //利用因果图和判定表 排除不可能出现的测试用例
+        //状态-1只出现在位置2，状态357上升阶段只出现在位置2，下落阶段出现在2-3
         /*  状态   -1       357     357
         *   方向   null     1       -1
         *   位置   2        2       2-3  位置2是 -(1/2)*Height  (1/6)*Height
