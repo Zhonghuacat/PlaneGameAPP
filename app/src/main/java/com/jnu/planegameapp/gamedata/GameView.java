@@ -97,7 +97,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void levelUP() {
+    public void levelUP() {
         if (protectTime>0) protectTime--;
         if (score >=0 && score<1000 ) gameLevel = 1;
         if (score >=1000 && score < 2000) gameLevel = 2;
@@ -106,7 +106,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         if (score >= 10000) gameLevel = 3 + score/5000;
     }
 
-    private void move_bullet(int time) {
+    public void move_bullet(int time) {
         //我方发射子弹
         if (time%(12-plane_player.speedUp)==0) {
             float positionX = plane_player.getX()-(float)(plane_player.getBitmap().getWidth()/2);
@@ -151,7 +151,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void move_enemyPlane(int number,int time) {
+    public void move_enemyPlane(int number,int time) {
         //添加飞机
         if (enemies.size()<number && Math.random() < 0.01*gameLevel && gameLevel%5!=0 ) {
             if (score > 3000 && Math.random() < 0.01*gameLevel){
@@ -213,7 +213,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void addEnemyBullet(Enemy enemy) {
+    public void addEnemyBullet(Enemy enemy) {
         //敌方添加子弹
         if (enemy.getClass()==Plane_enemy2.class && Math.random()<0.005){
             enemy.setBulletNumber(gameLevel/2);
@@ -226,7 +226,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void move_buff(){
+    public void move_buff(){
         //移动并判断是否命中
         for (Buff buff : buffs) {
             buff.move();
@@ -239,7 +239,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void move_mainPlane() {
+    public void move_mainPlane() {
         int path=20,path_x,path_y;
         float x_move=mouse_x-plane_player.getX();
         float y_move=mouse_y-plane_player.getY();
@@ -256,7 +256,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
     }
 
     //绘图逻辑
-    private void drawSomething() {
+    public void drawSomething() {
         try {
             Plane_boss planeBoss = null;
             //获得canvas对象
@@ -295,7 +295,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void bossStateAction() {
+    public void bossStateAction() {
         for (int i=0;i<enemies.size();i++){
             if (enemies.get(i).getClass()==Plane_boss.class){//BOSS逻辑
                 Plane_boss planeBoss = (Plane_boss)(enemies.get(i));
@@ -323,7 +323,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void hit(Bullet bullet, Enemy enemy){
+    public void hit(Bullet bullet, Enemy enemy){
         float distance_x = bullet.getX()-enemy.getX();
         float distance_y = bullet.getY()-enemy.getY();
         if(Math.abs(distance_x)<enemy.getBitmap().getWidth()/2)
@@ -333,7 +333,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             }
     }
 
-    private void hitBuff(Buff buff){
+    public void hitBuff(Buff buff){
         float distance_x = buff.getX()-plane_player.getX();
         float distance_y = buff.getY()-plane_player.getY();
         if(Math.abs(distance_x)<plane_player.getBitmap().getWidth()/2)
@@ -345,7 +345,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             }
     }
 
-    private void hitMainPlane(Bullet bullet){
+    public void hitMainPlane(Bullet bullet){
         float distance_x = bullet.getX()-plane_player.getX();
         float distance_y = bullet.getY()-plane_player.getY();
         if(Math.abs(distance_x)<plane_player.getBitmap().getWidth()/2)
@@ -358,7 +358,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             }
     }
 
-    private void hitBossPlane(Plane_boss planeBoss){
+    public void hitBossPlane(Plane_boss planeBoss){
         float distance_x = planeBoss.getX()-plane_player.getX();
         float distance_y = planeBoss.getY()-plane_player.getY();
         if(Math.abs(distance_x)<planeBoss.getBitmap().getWidth()/2)
@@ -376,7 +376,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             }
     }
 
-    private void hitMissile(Missile missile){
+    public void hitMissile(Missile missile){
         float distance_x = missile.getX()-plane_player.getX();
         float distance_y = missile.getY()-plane_player.getY();
         if(Math.abs(distance_x)<missile.getBitmap().getWidth()/2)
@@ -393,7 +393,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
             }
     }
 
-    private int getDegrees(Missile missile){
+    public int getDegrees(Missile missile){
         float distance_x = plane_player.getX()-missile.getX();
         float distance_y = plane_player.getY()-missile.getY();
         float now_tan=distance_y/distance_x;
@@ -417,7 +417,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         return 1;
     }
 
-    private int getDegrees(Plane_boss planeBoss){
+    public int getDegrees(Plane_boss planeBoss){
         float distance_x = plane_player.getX()-planeBoss.getX();
         float distance_y = plane_player.getY()-planeBoss.getY();
         float now_tan=distance_y/distance_x;
@@ -441,7 +441,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         return 1;
     }
 
-    private void create_buff(float rate){
+    public void create_buff(float rate){
         float get= (float) ((Math.random()*5)%5);
         switch ((int) get){
             case 0:if (Math.random()<0.1*rate) {
@@ -475,7 +475,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void create_buff(){
+    public void create_buff(){
         float get= (float) ((Math.random()*4)%4);
         switch ((int) get){
             case 0: buffs.add(new Buff_ATK(this.getContext()));break;
@@ -486,7 +486,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void createEnemyBullets(int number,Enemy enemy,int time){
+    public void createEnemyBullets(int number,Enemy enemy,int time){
         if (enemy.getBulletNumber()>0 && Math.random()<0.02 ){
             float turn = (float) Math.PI/32;
             float direction = (float) ((2*Math.random()+1)*Math.PI/4);
@@ -501,7 +501,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void createEnemyBullet(int number,Enemy enemy,int time) {
+    public void createEnemyBullet(int number,Enemy enemy,int time) {
         if ( enemy.getBulletNumber()>0 && time %15==0){//有子弹 按一定间隔发射
             if (enemy.getBulletNumber()==number){//新发射子弹
                 float direction = (float) ((2*Math.random()+1)*Math.PI/4);
@@ -526,7 +526,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         }
     }
 
-    private void initGame(){
+    public void initGame(){
         HP=3;
         bestScore[0] = Math.max(bestScore[0],score);
         score=0;
@@ -547,7 +547,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         create_buff();
     }
 
-    private void initView(){
+    public void initView(){
         mSurfaceHolder = getHolder();
         //注册回调方法
         mSurfaceHolder.addCallback(this);
@@ -559,7 +559,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
         paint.setColor(Color.WHITE);
     }
 
-    private void initMainPlane() {
+    public void initMainPlane() {
         mouse_x=screenWidth >> 1;
         mouse_y=screenHeight >> 1;
     }

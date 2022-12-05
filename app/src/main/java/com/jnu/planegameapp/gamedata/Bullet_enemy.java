@@ -90,4 +90,40 @@ public class Bullet_enemy implements Bullet{
     public void setDirection(float direction) {
         this.direction = direction;
     }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public float getDirection() {
+        return direction;
+    }
+
+    public void setATK(int ATK) {
+        this.ATK = ATK;
+    }
+
+    public boolean isHit() {
+        return Hit;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
 }

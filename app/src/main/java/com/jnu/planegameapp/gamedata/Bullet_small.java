@@ -75,4 +75,32 @@ public class Bullet_small implements Bullet{
     public void setDirection(float direction) {
         this.direction = direction;
     }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public void setATK(int ATK) {
+        this.ATK = ATK;
+    }
+
+    public boolean isHit() {
+        return Hit;
+    }
+
+    public float getDirection() {
+        return direction;
+    }
 }

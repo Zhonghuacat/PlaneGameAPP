@@ -54,11 +54,11 @@ public class Missile implements Enemy{
 
     //自动移动
     public void move(){
-        y += Math.sin(bulletDirection)*speed;
-        x += Math.cos(bulletDirection)*speed;
-
         float turn = (float) (Math.PI/64)*direction;
         bulletDirection += turn;
+
+        y += Math.sin(bulletDirection)*speed;
+        x += Math.cos(bulletDirection)*speed;
     }
 
     public void draw(@NonNull Canvas canvas){
