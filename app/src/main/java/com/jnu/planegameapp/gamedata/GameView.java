@@ -21,7 +21,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback,Runn
     private Canvas mCanvas;
     private Paint paint = new Paint();
     //子线程标志位
-    private boolean mIsDrawing;
+    public boolean mIsDrawing;
 
     private Plane_player plane_player;
     private List<Enemy> enemies=new ArrayList<>();
